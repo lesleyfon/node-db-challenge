@@ -25,9 +25,7 @@ async function findProjectById(id){
 
 }
 
-// knex('users')
-//   .join('contacts', 'users.id', '=', 'contacts.user_id')
-//   .select('users.id', 'contacts.phone')
+
 module.exports = {
     findProjects,
     findResources,
