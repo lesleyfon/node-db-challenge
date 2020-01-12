@@ -13,7 +13,11 @@ function findResources (){
 async function findProjectById(id){
     const project = await db('projects').where({id: id}).first();
     const task = await db('task').where('project_id', id)
-
+    const resource = await db('project_resource')
+                            .select("resource_name", "resource_description")
+                            .join('projects', 'project_resource.project_id', '=', 'projects.id')
+                            .join('resources', 'project_resource.resource_id', '=', 'resources.id')
+                            .where('projects.id', id)
     return{
         ...project,
         project_completed: (project.project_completed === 0) ? false : true,
@@ -22,7 +26,8 @@ async function findProjectById(id){
                 ...t,
                 task_completed: (t.task_completed === 0) ? false : true,
                }
-        })
+        }),
+        resource
     }
 
 }
