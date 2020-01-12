@@ -28,15 +28,19 @@ async function findProjectById(id){
 }
 
 function findTask(){
-    // const project = await db('projects')
-    // const task = await 
-
     return db('task').leftJoin('projects', 'task.project_id', '=', 'projects.id').select('task_description','notes','task_completed','project_id','project_name', 'project_description')
 }
 
+async function postResource(resources){
+
+    await db('resources').insert(resources);
+
+    return db('resources').where({resource_name: resources.resource_name})
+}
 module.exports = {
     findProjects,
     findResources,
     findProjectById,
-    findTask
+    findTask,
+    postResource
 }
