@@ -1,6 +1,10 @@
 const express = require("express");
 const { findProjects, findResources, findProjectById} = require("./../helper/helperMethods");
 const router = express.Router();
+const taskRoute = require("./task");
+
+router.use('/task', taskRoute)
+
 
 router.get("/", async (req, res) => {
   const projects = await findProjects();

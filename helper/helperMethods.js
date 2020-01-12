@@ -8,6 +8,8 @@ function findProjects() {
 function findResources (){
     return db('resources');
 }
+
+
 async function findProjectById(id){
     const project = await db('projects').where({id: id}).first();
     const task = await db('task').where('project_id', id)
@@ -25,9 +27,12 @@ async function findProjectById(id){
 
 }
 
-
+function findTask(){
+    return db('task')
+}
 module.exports = {
     findProjects,
     findResources,
     findProjectById,
+    findTask
 }
