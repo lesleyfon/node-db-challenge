@@ -3,7 +3,7 @@ exports.seed = function(knex){
         {
             project_name: 'first project',
             project_description: 'the project description',
-            project_completed: false, // or true, the database will return 1 for true and 0 for false
+            project_completed: true, // or true, the database will return 1 for true and 0 for false
            
         },
         {

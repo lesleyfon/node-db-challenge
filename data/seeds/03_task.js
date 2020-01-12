@@ -13,7 +13,7 @@ return knex('task').insert([
             project_id: 2 // or true
           },
         {
-            task_description: 'task description',
+            task_description: 'second task',
             notes: 'the task notes',
             task_completed: false,
             project_id: 1 // or true
