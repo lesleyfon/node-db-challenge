@@ -11,7 +11,6 @@ router.use('/', async (req, res ) => {
             task_completed: (t.task_completed === 0) ? false : true,
            }
     });
-
     res.status(200).json(tasks)
 })
 
