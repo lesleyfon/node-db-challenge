@@ -1,5 +1,5 @@
 const express = require("express");
-const { findProjects, findResources, findProjectById} = require("./../helper/helperMethods");
+const { findProjects, postProject, findProjectById} = require("./../helper/helperMethods");
 const router = express.Router();
 const taskRoute = require("./task");
 const resourcesRoute = require("./resources");
@@ -16,8 +16,17 @@ router.get("/", async (req, res) => {
 router.get("/:id",  async (req, res) => {
     const { id } = req.params
   const project = await findProjectById(id);
-    console.log(project)
   res.status(200).json(project);
 });
+
+router.post('/', async (req, res, next)=> {
+    const { project_name, project_description, project_completed } = req.body;
+
+    const project = await postProject({project_name, project_description, project_completed })
+    res.status(200).json({
+        message: 'successful',
+        project
+    })
+})
 
 module.exports = router;
