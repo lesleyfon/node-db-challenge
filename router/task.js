@@ -4,7 +4,7 @@ const router = express.Router({
     mergeParams: true
 })
 
-router.use('/', async (req, res ) => {
+router.get('/', async (req, res ) => {
     const tasks = await findTask().map(t =>{
         return {
             ...t,
@@ -13,7 +13,5 @@ router.use('/', async (req, res ) => {
     });
     res.status(200).json(tasks)
 })
-
-
 
 module.exports = router;
